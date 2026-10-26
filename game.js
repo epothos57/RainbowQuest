@@ -39,7 +39,14 @@ const HATS = [
   { id: "pumpkin", name: "Kürbis", emoji: "🎃", price: 240, description: "Gruselig gut" },
   { id: "rainbowhat", name: "Regenbogen", emoji: "🌈", price: 280, description: "Ein Regenbogen auf dem Kopf" },
   { id: "crown", name: "Krone", emoji: "👑", price: 300, description: "Für Königinnen und Könige des Wortschatzes" },
-  { id: "planet", name: "Planet", emoji: "🪐", price: 400, description: "Kreist um deinen Kopf" }
+  { id: "planet", name: "Planet", emoji: "🪐", price: 400, description: "Kreist um deinen Kopf" },
+  { id: "xmashat", name: "Weihnachtsmann", emoji: "🎅", price: 120, description: "Weihnachten: Ho, ho, ho!" },
+  { id: "easterhat", name: "Osterhase", emoji: "🐰", price: 110, description: "Ostern: Hoppelt mit dir um die Wette" },
+  { id: "ghosthat", name: "Gespenst", emoji: "👻", price: 150, description: "Halloween: Buh! Wer war das?" },
+  { id: "partyhat", name: "Partyhut", emoji: "🥳", price: 140, description: "Silvester: Auf ein tolles neues Jahr" },
+  { id: "cakehat", name: "Geburtstagstorte", emoji: "🎂", price: 130, description: "Geburtstag: Mit Kerze obendrauf" },
+  { id: "hearthat", name: "Herzgeschenk", emoji: "💝", price: 120, description: "Valentinstag: Von Herzen" },
+  { id: "carnivalhat", name: "Faschingsmaske", emoji: "🎭", price: 130, description: "Karneval: Helau und Alaaf!" }
 ];
 
 const TRAILS = [
@@ -48,7 +55,14 @@ const TRAILS = [
   { id: "hearts", name: "Herzchenspur", chars: ["💖", "💗", "💕"], price: 100, description: "Liebe auf Schritt und Tritt" },
   { id: "notes", name: "Musikspur", chars: ["🎵", "🎶"], price: 150, description: "Jeder Schritt ein Lied" },
   { id: "stars", name: "Sternschnuppen", chars: ["🌟", "💫", "⭐"], price: 220, description: "Wünsch dir was!" },
-  { id: "rainbow", name: "Regenbogenspur", chars: ["🔴", "🟠", "🟡", "🟢", "🔵", "🟣"], price: 350, description: "Alle Farben hinter dir her" }
+  { id: "rainbow", name: "Regenbogenspur", chars: ["🔴", "🟠", "🟡", "🟢", "🔵", "🟣"], price: 350, description: "Alle Farben hinter dir her" },
+  { id: "xmas", name: "Schneeflockenspur", chars: ["❄️", "🎄", "⭐"], price: 140, description: "Weihnachten: Es schneit bei jedem Schritt" },
+  { id: "easter", name: "Eierspur", chars: ["🥚", "🌷", "🐣"], price: 130, description: "Ostern: Versteckte Eier im Gras" },
+  { id: "halloween", name: "Spukspur", chars: ["🦇", "🕷️", "🎃"], price: 150, description: "Halloween: Gruselig und lustig" },
+  { id: "newyear", name: "Sektspur", chars: ["🥂", "✨", "🎆"], price: 150, description: "Silvester: Prost Neujahr!" },
+  { id: "birthday", name: "Partyspur", chars: ["🎈", "🎁", "🎉"], price: 140, description: "Geburtstag: Hinter dir geht die Party los" },
+  { id: "valentine", name: "Rosenspur", chars: ["🌹", "💌", "💘"], price: 140, description: "Valentinstag: Romantisch unterwegs" },
+  { id: "carnival", name: "Narrenspur", chars: ["🎭", "🎊", "🪅"], price: 140, description: "Karneval: Bunt und närrisch" }
 ];
 
 const CELEBRATIONS = [
@@ -56,7 +70,14 @@ const CELEBRATIONS = [
   { id: "confetti", name: "Konfetti", icon: "🎊", effect: "confetti", price: 80, description: "Bunte Schnipsel regnen herab" },
   { id: "balloons", name: "Luftballons", icon: "🎈", effect: "balloons", price: 150, description: "Ballons steigen in den Himmel" },
   { id: "fireworks", name: "Feuerwerk", icon: "🎆", effect: "fireworks", price: 250, description: "Es knallt und funkelt" },
-  { id: "goldrain", name: "Goldregen", icon: "💰", effect: "goldrain", price: 400, description: "Es regnet Münzen!" }
+  { id: "goldrain", name: "Goldregen", icon: "💰", effect: "goldrain", price: 400, description: "Es regnet Münzen!" },
+  { id: "xmasfx", name: "Schneefall", icon: "❄️", effect: "emoji", mode: "fall", chars: ["❄️", "⛄", "🎄"], price: 250, description: "Weihnachten: Leise rieselt der Schnee" },
+  { id: "easterfx", name: "Eierregen", icon: "🥚", effect: "emoji", mode: "fall", chars: ["🥚", "🐣", "🌷"], price: 230, description: "Ostern: Bunte Eier fallen vom Himmel" },
+  { id: "halloweenfx", name: "Fledermausschwarm", icon: "🦇", effect: "emoji", mode: "rise", chars: ["🦇", "👻", "🎃"], price: 260, description: "Halloween: Es spukt im Himmel" },
+  { id: "newyearfx", name: "Silvesterknaller", icon: "🧨", effect: "emoji", mode: "burst", chars: ["🎇", "🧨", "✨"], price: 280, description: "Silvester: Mitternacht, es knallt!" },
+  { id: "birthdayfx", name: "Kuchenregen", icon: "🍰", effect: "emoji", mode: "fall", chars: ["🍰", "🧁", "🎂"], price: 240, description: "Geburtstag: Lecker, es regnet Kuchen" },
+  { id: "valentinefx", name: "Herzregen", icon: "💖", effect: "emoji", mode: "rise", chars: ["💖", "💗", "💘"], price: 230, description: "Valentinstag: Herzen steigen auf" },
+  { id: "carnivalfx", name: "Luftschlangen", icon: "🎊", effect: "emoji", mode: "fall", chars: ["🎊", "🪅", "🎭"], price: 210, description: "Karneval: Konfettiparade" }
 ];
 
 const CHESTS = [
@@ -64,7 +85,14 @@ const CHESTS = [
   { id: "gift", name: "Geschenkbox", price: 80, description: "Mit Schleife – was ist wohl drin?", colors: { lid: "#e6536e", body: "#d94661", line: "#a8304a", band: "#ffe08a", lock: "#fff2c4" } },
   { id: "pirate", name: "Piratenkiste", price: 160, description: "Arrr! Mit Eisenbeschlägen", colors: { lid: "#5c3b26", body: "#4d311f", line: "#2b1b10", band: "#9aa3ad", lock: "#c9ced4" } },
   { id: "crystal", name: "Kristalltruhe", price: 260, description: "Glitzert wie ein Eiskristall", colors: { lid: "#9fd8f5", body: "#86c8ec", line: "#4c95c4", band: "#ffffff", lock: "#e2f6ff" } },
-  { id: "gold", name: "Goldtruhe", price: 450, description: "Purer Luxus", colors: { lid: "#f4c542", body: "#e8b52f", line: "#a97c12", band: "#fff1b8", lock: "#ffffff" } }
+  { id: "gold", name: "Goldtruhe", price: 450, description: "Purer Luxus", colors: { lid: "#f4c542", body: "#e8b52f", line: "#a97c12", band: "#fff1b8", lock: "#ffffff" } },
+  { id: "xmaschest", name: "Adventskiste", price: 180, description: "Weihnachten: Rot, grün und festlich", colors: { lid: "#c8312f", body: "#b02a28", line: "#7d1b1a", band: "#2f8f4e", lock: "#ffe9a8" } },
+  { id: "eastechest", name: "Osternest", price: 170, description: "Ostern: Pastellfarben und süß", colors: { lid: "#f7c8e0", body: "#cde9b0", line: "#8cb66a", band: "#fff3a6", lock: "#ffffff" } },
+  { id: "halloweenchest", name: "Hexenkiste", price: 190, description: "Halloween: Orange mit Spinnennetz", colors: { lid: "#f08a24", body: "#3a2a4d", line: "#1d1229", band: "#7ccf4a", lock: "#d9ffbf" } },
+  { id: "newyearchest", name: "Mitternachtstruhe", price: 200, description: "Silvester: Dunkel mit Goldglanz", colors: { lid: "#2a2f6b", body: "#1f2354", line: "#0f1236", band: "#f4c542", lock: "#fff1b8" } },
+  { id: "birthdaychest", name: "Tortenkiste", price: 170, description: "Geburtstag: Rosa mit Sahne", colors: { lid: "#ffd1e3", body: "#f59ac0", line: "#c4638f", band: "#ffffff", lock: "#ff6f9c" } },
+  { id: "valentinechest", name: "Herzkiste", price: 170, description: "Valentinstag: Voller Liebe", colors: { lid: "#ef4f78", body: "#d93a65", line: "#a42447", band: "#ffc2d4", lock: "#ffffff" } },
+  { id: "carnivalchest", name: "Narrenkiste", price: 180, description: "Karneval: Bunt wie ein Harlekin", colors: { lid: "#7c4dd6", body: "#e8b52f", line: "#4a2a8f", band: "#e2502a", lock: "#ffffff" } }
 ];
 
 const PATHS = [
@@ -87,55 +115,43 @@ const BACKGROUNDS = [
   { id: "meadow", name: "Blumenwiese", price: 90, className: "bg-meadow", dark: false, description: "Blumen und Schmetterlinge", sky: ["☁️", "🦋"], ground: ["🌼", "🌷", "🌸", "🌱"] },
   { id: "night", name: "Sternennacht", price: 180, className: "bg-night", dark: true, description: "Mondschein und Sternenglanz", sky: ["⭐", "✨", "🌙", "✨"], ground: [] },
   { id: "forest", name: "Zauberwald", price: 260, className: "bg-forest", dark: false, description: "Hohe Bäume und Pilze", sky: ["🍃", "🐦"], ground: ["🌲", "🌳", "🍄", "🌲"] },
-  { id: "space", name: "Weltall", price: 450, className: "bg-space", dark: true, description: "Planeten und Kometen", sky: ["🪐", "⭐", "☄️", "✨", "🌍"], ground: [] }
+  { id: "space", name: "Weltall", price: 450, className: "bg-space", dark: true, description: "Planeten und Kometen", sky: ["🪐", "⭐", "☄️", "✨", "🌍"], ground: [] },
+  { id: "xmasworld", name: "Winterwunderland", price: 200, className: "bg-xmas", dark: false, description: "Weihnachten: Verschneite Tannen", sky: ["❄️", "⭐", "❄️"], ground: ["🎄", "⛄", "🎁", "🎄"] },
+  { id: "easterworld", name: "Osterwiese", price: 190, className: "bg-easter", dark: false, description: "Ostern: Eier im Frühlingsgras", sky: ["☁️", "🦋", "🐥"], ground: ["🥚", "🌷", "🐰", "🌼"] },
+  { id: "halloweenworld", name: "Spukschloss", price: 210, className: "bg-halloween", dark: true, description: "Halloween: Vollmond und Fledermäuse", sky: ["🦇", "🌕", "🦇", "👻"], ground: ["🎃", "🪦", "🕸️", "🎃"] },
+  { id: "newyearworld", name: "Silvesternacht", price: 220, className: "bg-newyear", dark: true, description: "Silvester: Feuerwerk über der Stadt", sky: ["🎆", "🎇", "✨", "🎆"], ground: ["🏙️", "🥂"] },
+  { id: "birthdayworld", name: "Partyraum", price: 180, className: "bg-birthday", dark: false, description: "Geburtstag: Ballons und Geschenke", sky: ["🎈", "🎉", "🎈"], ground: ["🎁", "🎂", "🎁", "🎈"] },
+  { id: "valentineworld", name: "Rosengarten", price: 190, className: "bg-valentine", dark: false, description: "Valentinstag: Rosen und Herzen", sky: ["💕", "☁️", "💗"], ground: ["🌹", "🌷", "🌹", "💐"] },
+  { id: "carnivalworld", name: "Faschingsumzug", price: 200, className: "bg-carnival", dark: false, description: "Karneval: Bunter Umzug", sky: ["🎊", "🎈", "🪅"], ground: ["🎪", "🎭", "🎺", "🎪"] }
 ];
 
 const SHOP = { animals: ANIMALS, hats: HATS, trails: TRAILS, celebrations: CELEBRATIONS, chests: CHESTS, paths: PATHS, backgrounds: BACKGROUNDS };
 
-// Transcribed from the legible vocabulary entries in the supplied photo.
-const BOOK_WORDS = [
-  ["Blog; Internettagebuch", ["blog"]],
-  ["so", ["so"]],
-  ["Sehenswürdigkeit", ["sight"]],
-  ["Glocke", ["bell"]],
-  ["Turm", ["tower"]],
-  ["Spitzname", ["nickname"]],
-  ["Rad; Steuerrad; Steuer", ["wheel"]],
-  ["hoch; groß", ["high"]],
-  ["Ticket; Eintrittskarte; Fahrschein", ["ticket"]],
-  ["teuer", ["expensive"]],
-  ["Brücke", ["bridge"]],
-  ["hinüber; herüber; quer durch", ["across"]],
-  ["Spitze; oberer Teil; oberes Ende", ["top"]],
-  ["Theater", ["theatre", "theater"]],
-  ["Theaterstück", ["play"]],
-  ["Autor/in; Verfasser/in; Schriftsteller/in", ["writer"]],
-  ["ein anderes; noch ein", ["another"]],
-  ["Es wurde … gebaut.", ["it was built", "it was built ..."]],
-  ["vor (zeitlich, z. B. vor zwei Jahren)", ["ago"]],
-  ["zweihundert", ["two hundred", "200"]],
-  ["Stadtrundfahrt im Bus mit beliebigem Ein- und Aussteigen", ["hop-on hop-off", "hop on hop off"]],
-  ["einsteigen", ["to get on", "get on"]],
-  ["Affe", ["monkey"]],
-  ["Fahrer; Fahrerin", ["driver"]],
-  ["Witz", ["joke"]],
-  ["nennen", ["to call", "call"]],
-  ["Schlüssel; Taste", ["key"]],
-  ["als Nächstes", ["next"]],
-  ["aufhören; anhalten", ["to stop", "stop"]],
-  ["Zirkus", ["circus"]],
-  ["Zelt", ["tent"]],
-  ["überall; irgendwo", ["anywhere"]],
-  ["überrascht", ["surprised"]],
-  ["Elefant", ["elephant"]],
-  ["aussteigen", ["to get off", "get off"]],
-  ["Gefängnis", ["prison"]],
-  ["Kronjuwelen", ["Crown Jewels", "the Crown Jewels"]],
-  ["nehmen; mitnehmen", ["to take", "take"]],
-  ["über", ["over"]],
-  ["Schritt; Stufe", ["step"]],
-  ["flüstern", ["to whisper", "whisper"]]
-].map(([german, english], index) => ({ id: `book-${index}`, german, english }));
+const VOCAB_GROUPS = typeof require === "function" ? require("./vocab.js") : globalThis.RQ_VOCAB;
+const BOOK_WORDS = VOCAB_GROUPS.flatMap(group => group.words);
+const DEFAULT_GROUPS = ["unit-1-intro", "unit-1-zahlen-101-1-000", "unit-1-topic-1"];
+const VERBS = typeof require === "function" ? require("./verbs.js") : globalThis.RQ_VERBS;
+const VERB_FIELDS = 3;
+const VERB_BONUS = 2;
+
+// The window flag lets the browser tests switch the verb fields off.
+function verbFieldCount() {
+  return typeof window !== "undefined" && window.__noVerbFields ? 0 : VERB_FIELDS;
+}
+
+// Random, non-adjacent path steps (1 … length-1) that hold a verb challenge.
+function pickVerbSteps(count = VERB_FIELDS) {
+  const steps = [];
+  for (const step of shuffle(Array.from({ length: ROUND_LENGTH - 1 }, (_, i) => i + 1))) {
+    if (steps.length >= count) break;
+    if (steps.every(other => Math.abs(other - step) > 1)) steps.push(step);
+  }
+  return steps.sort((a, b) => a - b);
+}
+
+function checkVerbForms(verb, inputs) {
+  return verb.forms.map((accepted, index) => isCorrectAnswer(inputs[index] ?? "", accepted));
+}
 
 function normalizeAnswer(value) {
   return value.normalize("NFKC").toLowerCase().trim()
@@ -188,6 +204,8 @@ function initialSave() {
     owned: defaultOwned(),
     selected: defaultSelected(),
     customWords: [],
+    activeGroups: [...DEFAULT_GROUPS],
+    verbSteps: pickVerbSteps(verbFieldCount()),
     settings: { voice: true },
     stats: emptyStats()
   };
@@ -246,6 +264,13 @@ function isValidStats(stats) {
       && ["correct", "wrong", "revealed", "run"].every(key => isCount(entry[key])));
 }
 
+// Drops unknown group ids (e.g. from earlier versions); falls back to the default groups.
+function migrateGroups(groups) {
+  if (!Array.isArray(groups)) return [...DEFAULT_GROUPS];
+  const known = [...new Set(groups)].filter(id => VOCAB_GROUPS.some(group => group.id === id));
+  return known.length ? known : [...DEFAULT_GROUPS];
+}
+
 // Older saves lack newer fields or shop categories; fill them with defaults, keep everything else.
 function migrateSave(raw) {
   if (!raw || typeof raw !== "object") return raw;
@@ -263,6 +288,8 @@ function migrateSave(raw) {
     ...save, owned, selected,
     streak: save.streak ?? 0,
     jokers: save.jokers ?? 0,
+    activeGroups: migrateGroups(save.activeGroups),
+    verbSteps: Array.isArray(save.verbSteps) ? save.verbSteps : pickVerbSteps(verbFieldCount()),
     settings: save.settings ?? { voice: true },
     stats: save.stats ?? emptyStats()
   };
@@ -292,6 +319,12 @@ function isValidSave(save) {
     })
     && save.settings !== null && typeof save.settings === "object" && typeof save.settings.voice === "boolean"
     && isValidStats(save.stats)
+    && Array.isArray(save.verbSteps) && save.verbSteps.length < ROUND_LENGTH
+    && new Set(save.verbSteps).size === save.verbSteps.length
+    && save.verbSteps.every(step => Number.isSafeInteger(step) && step >= 1 && step < ROUND_LENGTH)
+    && Array.isArray(save.activeGroups) && save.activeGroups.length > 0
+    && new Set(save.activeGroups).size === save.activeGroups.length
+    && save.activeGroups.every(id => VOCAB_GROUPS.some(group => group.id === id))
     && Array.isArray(save.customWords) && save.customWords.every(isValidWord)
     && new Set(save.customWords.map(word => word.id)).size === save.customWords.length;
 }
@@ -393,6 +426,9 @@ function startApp() {
   const SVG_NS = "http://www.w3.org/2000/svg";
   let save = initialSave();
   let currentWord;
+  const isVerb = () => Boolean(currentWord?.forms);
+  const VERB_INPUTS = ["verb-inf", "verb-past", "verb-pp"];
+  let verbQueue = [];
   let queue = [];
   let answered = false;
   let wrongCounted = false;
@@ -428,7 +464,8 @@ function startApp() {
     }
   }
 
-  const allWords = () => [...BOOK_WORDS, ...save.customWords];
+  const activeBookWords = () => VOCAB_GROUPS.filter(group => save.activeGroups.includes(group.id)).flatMap(group => group.words);
+  const allWords = () => [...activeBookWords(), ...save.customWords];
   const selectedItem = category => SHOP[category].find(item => item.id === save.selected[category]);
   const stepX = step => START_X + step * stepWidth;
   const chestStep = () => ROUND_LENGTH + 62 / stepWidth;
@@ -492,6 +529,10 @@ function startApp() {
     for (let step = 0; step <= ROUND_LENGTH; step++) {
       const marker = document.createElement("span");
       marker.className = "path-marker";
+      if (save.verbSteps.includes(step)) {
+        marker.classList.add("verb");
+        marker.title = "Verben-Feld: Hier musst du alle drei Formen eines unregelmäßigen Verbs nennen";
+      }
       marker.style.left = `${stepX(step)}px`;
       marker.style.top = `${trackY(step)}px`;
       $("path-markers").append(marker);
@@ -645,6 +686,16 @@ function startApp() {
           particle(i % 2 ? "✨" : "🎇", "burst", bx, by, burst * 380, { dx: `${Math.cos(angle) * 60}px`, dy: `${Math.sin(angle) * 60}px` });
         }
       }
+    } else if (effect === "emoji") {
+      const { mode, chars } = selectedItem("celebrations");
+      for (let i = 0; i < 30; i++) {
+        const char = chars[i % chars.length];
+        if (mode === "rise") particle(char, "rise", x(), WORLD_HEIGHT + 30, i * 90, { dy: `${-WORLD_HEIGHT - 80}px`, dx: `${random(-30, 30)}px` });
+        else if (mode === "burst") {
+          const angle = (i / 30) * Math.PI * 2;
+          particle(char, "burst", left + viewportWidth / 2, 110, (i % 3) * 300, { dx: `${Math.cos(angle) * random(50, 110)}px`, dy: `${Math.sin(angle) * random(40, 90)}px` });
+        } else particle(char, "fall", x(), -20, random(0, 1200), { dy: `${WORLD_HEIGHT + 40}px`, dx: `${random(-40, 40)}px`, rot: `${random(120, 420)}deg` });
+      }
     } else if (effect === "goldrain") {
       for (let i = 0; i < 35; i++) particle(i % 5 ? "🪙" : "💰", "fall", x(), -20, random(0, 1200), { dy: `${WORLD_HEIGHT + 40}px`, dx: "0px", rot: `${random(180, 540)}deg` });
     }
@@ -657,7 +708,7 @@ function startApp() {
 
   function renderJoker() {
     $("joker-button").textContent = `💡 Tipp-Joker (${save.jokers})`;
-    $("joker-button").hidden = answered;
+    $("joker-button").hidden = answered || isVerb();
     $("joker-button").disabled = jokerUsed || save.jokers === 0;
     $("joker-button").title = save.jokers === 0 ? "Joker gibt’s im Zauberladen" : "Zeigt den ersten Buchstaben";
   }
@@ -882,24 +933,49 @@ function startApp() {
     }
   });
 
+  function pickVerb() {
+    if (!verbQueue.length) {
+      verbQueue = shuffle(VERBS);
+      if (verbQueue.length > 1 && verbQueue[verbQueue.length - 1].id === currentWord?.id) {
+        [verbQueue[0], verbQueue[verbQueue.length - 1]] = [verbQueue[verbQueue.length - 1], verbQueue[0]];
+      }
+    }
+    return verbQueue.pop();
+  }
+
   function nextWord() {
     stopSpeech();
     repeatWord = null;
     $("speak-panel").hidden = true;
-    if (!queue.length) {
-      queue = buildQueue(allWords(), save.stats);
-      if (queue.length > 1 && queue[queue.length - 1].id === currentWord?.id) {
-        [queue[0], queue[queue.length - 1]] = [queue[queue.length - 1], queue[0]];
+    if (save.verbSteps.includes(correct) && VERBS.length) {
+      currentWord = pickVerb();
+    } else {
+      if (!queue.length) {
+        queue = buildQueue(allWords(), save.stats);
+        if (queue.length > 1 && queue[queue.length - 1].id === currentWord?.id) {
+          [queue[0], queue[queue.length - 1]] = [queue[queue.length - 1], queue[0]];
+        }
       }
+      currentWord = queue.pop();
     }
-    currentWord = queue.pop();
     answered = false;
     wrongCounted = false;
+    const verb = isVerb();
+    $("answer-form").hidden = verb;
+    $("verb-form").hidden = !verb;
+    $("quiz-eyebrow").textContent = verb ? "⭐ VERBEN-FELD" : "DEINE NÄCHSTE VOKABEL";
+    $("quiz-title").textContent = verb ? "Nenne alle drei Formen!" : "Wie heißt das auf Englisch?";
     $("german-word").textContent = currentWord.german;
-    $("word-category").textContent = currentWord.id.startsWith("custom-") ? "DEIN EIGENES WORT" : "AUS DEINEM SCHULBUCH";
+    $("word-category").textContent = verb ? "UNREGELMÄSSIGES VERB" : currentWord.id.startsWith("custom-") ? "DEIN EIGENES WORT" : "AUS DEINEM SCHULBUCH";
     $("answer").value = "";
     $("answer").disabled = false;
     $("check-answer").disabled = false;
+    for (const id of VERB_INPUTS) {
+      $(id).value = "";
+      $(id).disabled = false;
+      $(id).classList.remove("ok", "bad");
+    }
+    $("check-verb").disabled = false;
     $("show-answer").hidden = false;
     $("next-word").hidden = true;
     $("keyboard-hint").hidden = false;
@@ -918,48 +994,88 @@ function startApp() {
     $("show-answer").hidden = true;
     $("keyboard-hint").hidden = true;
     $("speak-german").disabled = true;
+    for (const id of VERB_INPUTS) $(id).disabled = true;
+    $("check-verb").disabled = true;
     renderJoker();
+    if (isVerb()) {
+      showNext();
+      if (save.settings.voice) speak(currentWord.shown.map(form => form.split(" / ")[0]).join(", "), "en-GB");
+      return;
+    }
     startRepeat(currentWord);
   }
 
-  $("answer-form").addEventListener("submit", event => {
-    event.preventDefault();
-    if (answered || !normalizeAnswer($("answer").value)) return;
-    if (!isCorrectAnswer($("answer").value, currentWord.english)) {
-      const lostStreak = save.streak > 0;
-      save.streak = 0;
-      if (!wrongCounted) recordAnswer(save.stats, currentWord.id, "wrong");
-      wrongCounted = true;
-      persist();
-      renderPosition();
-      feedback($("feedback"), `Noch nicht ganz! Versuche es noch einmal — du verlierst keinen Schritt.${lostStreak ? " Deine Serie startet neu." : ""}`, "error");
-      $("answer").select();
-      return;
-    }
+  function registerWrong(message) {
+    const lostStreak = save.streak > 0;
+    save.streak = 0;
+    if (!wrongCounted) recordAnswer(save.stats, currentWord.id, "wrong");
+    wrongCounted = true;
+    persist();
+    renderPosition();
+    feedback($("feedback"), `${message} Versuche es noch einmal — du verlierst keinen Schritt.${lostStreak ? " Deine Serie startet neu." : ""}`, "error");
+  }
+
+  function completeStep(answerText, bonus = 0) {
     const fromStep = correct;
     correct++;
     save.streak++;
     recordAnswer(save.stats, currentWord.id, "correct");
     save.stats.bestStreak = Math.max(save.stats.bestStreak, save.streak);
     const streakBonus = save.streak % STREAK_SIZE === 0 ? STREAK_BONUS : 0;
-    save.coins += WORD_REWARD + streakBonus;
+    const gain = WORD_REWARD + bonus + streakBonus;
+    save.coins += gain;
     const streakText = streakBonus ? ` 🔥 ${save.streak}er-Serie! +${streakBonus} Bonus-Gold.` : "";
+    const bonusText = bonus ? ` ⭐ Verben-Bonus: +${bonus}.` : "";
     if (correct === ROUND_LENGTH) {
       save.coins += REWARD;
       save.progress = 0;
       save.stats.rounds++;
-      feedback($("feedback"), `Schatz gefunden! +${REWARD + WORD_REWARD + streakBonus} Gold für dich.${streakText} Schau im Zauberladen vorbei oder starte eine neue Schatzsuche!`, "success");
+      feedback($("feedback"), `Schatz gefunden! +${REWARD + gain} Gold für dich.${bonusText}${streakText} Schau im Zauberladen vorbei oder starte eine neue Schatzsuche!`, "success");
       setTimeout(celebrate, 800);
     } else {
       save.progress = correct;
       const left = ROUND_LENGTH - correct;
-      feedback($("feedback"), `Richtig! ${currentWord.english[0]} — +${WORD_REWARD} 🪙.${streakText} Noch ${left} ${left === 1 ? "Wort" : "Wörter"} bis zum Schatz.`, "success");
+      feedback($("feedback"), `Richtig! ${answerText} — +${WORD_REWARD + bonus} 🪙.${bonusText}${streakText} Noch ${left} ${left === 1 ? "Wort" : "Wörter"} bis zum Schatz.`, "success");
     }
     persist();
     spawnTrail(fromStep, correct);
     renderPosition();
     setTimeout(playTrick, 550);
     finishQuestion();
+  }
+
+  $("answer-form").addEventListener("submit", event => {
+    event.preventDefault();
+    if (answered || isVerb() || !normalizeAnswer($("answer").value)) return;
+    if (!isCorrectAnswer($("answer").value, currentWord.english)) {
+      registerWrong("Noch nicht ganz!");
+      $("answer").select();
+      return;
+    }
+    completeStep(currentWord.english[0]);
+  });
+
+  $("verb-form").addEventListener("submit", event => {
+    event.preventDefault();
+    if (answered || !isVerb()) return;
+    const inputs = VERB_INPUTS.map(id => $(id).value);
+    const empty = inputs.findIndex(value => !normalizeAnswer(value));
+    if (empty >= 0) {
+      feedback($("feedback"), "Bitte fülle alle drei Felder aus.", "error");
+      $(VERB_INPUTS[empty]).focus();
+      return;
+    }
+    const results = checkVerbForms(currentWord, inputs);
+    VERB_INPUTS.forEach((id, index) => {
+      $(id).classList.toggle("ok", results[index]);
+      $(id).classList.toggle("bad", !results[index]);
+    });
+    if (!results.every(Boolean)) {
+      registerWrong("Noch nicht ganz – prüfe die rot markierten Felder!");
+      $(VERB_INPUTS[results.indexOf(false)]).select();
+      return;
+    }
+    completeStep(currentWord.shown.join(" – "), VERB_BONUS);
   });
 
   $("show-answer").addEventListener("click", () => {
@@ -968,19 +1084,23 @@ function startApp() {
     recordAnswer(save.stats, currentWord.id, "revealed");
     persist();
     renderPosition();
-    feedback($("feedback"), `Die Lösung ist: ${currentWord.english.join(" / ")}. Dieses Wort kommt später wieder. Hierfür gibt es keinen Schritt, und deine Serie startet neu.`);
+    const solution = isVerb() ? currentWord.shown.join(" – ") : currentWord.english.join(" / ");
+    feedback($("feedback"), `Die Lösung ist: ${solution}. Dieses Wort kommt später wieder. Hierfür gibt es keinen Schritt, und deine Serie startet neu.`);
     // Return the revealed word to the queue, with other words before it.
-    queue.unshift(currentWord);
+    (isVerb() ? verbQueue : queue).unshift(currentWord);
     finishQuestion();
   });
 
   $("next-word").addEventListener("click", () => {
     if (correct === ROUND_LENGTH) {
       correct = 0;
+      save.verbSteps = pickVerbSteps(verbFieldCount());
+      persist();
+      renderWorld();
       renderPosition();
     }
     nextWord();
-    $("answer").focus();
+    $(isVerb() ? "verb-inf" : "answer").focus();
   });
 
   function shopPreview(category, item) {
@@ -1099,7 +1219,7 @@ function startApp() {
   function renderWords() {
     $("word-count").textContent = `${allWords().length} Wörter`;
     $("word-list").replaceChildren();
-    for (const word of [...save.customWords, ...BOOK_WORDS]) {
+    for (const word of [...save.customWords, ...activeBookWords()]) {
       const row = document.createElement("div");
       row.className = "word-entry";
       const german = document.createElement("span");
@@ -1301,6 +1421,107 @@ function startApp() {
     feedback($("shop-feedback"), "");
     $("shop-dialog").showModal();
   });
+  function applyGroupSelection(ids) {
+    if (!ids.length) {
+      feedback($("groups-feedback"), "Mindestens ein Kapitel muss ausgewählt bleiben.", "error");
+      return;
+    }
+    save.activeGroups = VOCAB_GROUPS.filter(group => ids.includes(group.id)).map(group => group.id);
+    persist();
+    feedback($("groups-feedback"), "");
+    queue = [];
+    if (!answered && currentWord && !currentWord.id.startsWith("custom-") && !allWords().some(word => word.id === currentWord.id)) nextWord();
+    renderGroups();
+    renderWords();
+  }
+
+  const expandedGroups = new Set();
+
+  function renderGroups() {
+    const wordTotal = activeBookWords().length;
+    $("groups-count").textContent = `${save.activeGroups.length} von ${VOCAB_GROUPS.length} Kapiteln · ${wordTotal} Buchwörter`;
+    const units = new Map();
+    for (const group of VOCAB_GROUPS) {
+      if (!units.has(group.unit)) units.set(group.unit, []);
+      units.get(group.unit).push(group);
+    }
+    const sections = [];
+    for (const [unit, groups] of units) {
+      const section = document.createElement("section");
+      section.className = "group-unit";
+      const activeInUnit = groups.filter(group => save.activeGroups.includes(group.id));
+      const all = document.createElement("label");
+      all.className = "group-unit-title";
+      const allBox = document.createElement("input");
+      allBox.type = "checkbox";
+      allBox.checked = activeInUnit.length === groups.length;
+      allBox.indeterminate = activeInUnit.length > 0 && activeInUnit.length < groups.length;
+      allBox.dataset.unit = unit;
+      allBox.addEventListener("change", () => {
+        const unitIds = groups.map(group => group.id);
+        const rest = save.activeGroups.filter(id => !unitIds.includes(id));
+        applyGroupSelection(allBox.checked ? [...rest, ...unitIds] : rest);
+      });
+      const name = document.createElement("span");
+      name.textContent = unit;
+      const total = document.createElement("small");
+      total.textContent = `${groups.reduce((sum, group) => sum + group.words.length, 0)} Wörter`;
+      all.append(allBox, name, total);
+      section.append(all);
+      for (const group of groups) {
+        const row = document.createElement("label");
+        row.className = "group-row";
+        const box = document.createElement("input");
+        box.type = "checkbox";
+        box.checked = save.activeGroups.includes(group.id);
+        box.dataset.group = group.id;
+        box.addEventListener("change", () => {
+          applyGroupSelection(box.checked ? [...save.activeGroups, group.id] : save.activeGroups.filter(id => id !== group.id));
+        });
+        const title = document.createElement("span");
+        title.textContent = group.title;
+        const count = document.createElement("small");
+        count.textContent = `${group.words.length} Wörter`;
+        const open = expandedGroups.has(group.id);
+        const toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "group-toggle";
+        toggle.dataset.toggle = group.id;
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", `Wörter von ${group.title} ${open ? "ausblenden" : "anzeigen"}`);
+        toggle.textContent = open ? "▾" : "▸";
+        toggle.addEventListener("click", () => {
+          if (!expandedGroups.delete(group.id)) expandedGroups.add(group.id);
+          renderGroups();
+        });
+        row.append(box, title, count, toggle);
+        section.append(row);
+        if (open) {
+          const list = document.createElement("div");
+          list.className = "group-words";
+          for (const word of group.words) {
+            const entry = document.createElement("div");
+            entry.className = "word-entry";
+            const german = document.createElement("span");
+            german.textContent = word.german;
+            const english = document.createElement("span");
+            english.textContent = word.english.join(" / ");
+            entry.append(german, english);
+            list.append(entry);
+          }
+          section.append(list);
+        }
+      }
+      sections.push(section);
+    }
+    $("groups-list").replaceChildren(...sections);
+  }
+
+  $("open-groups").addEventListener("click", () => {
+    feedback($("groups-feedback"), "");
+    renderGroups();
+    $("groups-dialog").showModal();
+  });
   $("open-words").addEventListener("click", () => {
     renderWords();
     $("words-dialog").showModal();
@@ -1325,7 +1546,7 @@ function startApp() {
 if (typeof document !== "undefined") startApp();
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
-    BOOK_WORDS, ANIMALS, HATS, TRAILS, CELEBRATIONS, CHESTS, PATHS, BACKGROUNDS, SHOP, ROUND_LENGTH, REWARD, WORD_REWARD,
+    BOOK_WORDS, VOCAB_GROUPS, DEFAULT_GROUPS, VERBS, VERB_FIELDS, VERB_BONUS, pickVerbSteps, checkVerbForms, ANIMALS, HATS, TRAILS, CELEBRATIONS, CHESTS, PATHS, BACKGROUNDS, SHOP, ROUND_LENGTH, REWARD, WORD_REWARD,
     STREAK_SIZE, STREAK_BONUS, JOKER_PRICE,
     normalizeAnswer, isCorrectAnswer, isSpokenMatch, MAX_SPEAK_TRIES, shuffle, initialSave, migrateSave, isValidSave, buyItem,
     buyJoker, hintPattern, totalShopPrice, trackY,

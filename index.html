@@ -6,6 +6,8 @@
   <meta name="theme-color" content="#faf7f2">
   <title>Rainbow Quest · Dein Vokabelabenteuer</title>
   <link rel="stylesheet" href="style.css">
+  <script src="vocab.js" defer></script>
+  <script src="verbs.js" defer></script>
   <script src="game.js" defer></script>
 </head>
 <body>
@@ -58,7 +60,7 @@
 
       <div class="learning-layout">
         <section class="quiz-card" aria-labelledby="quiz-title">
-          <div class="card-topline"><span class="eyebrow">DEINE NÄCHSTE VOKABEL</span><span class="language-tag">DE → EN</span></div>
+          <div class="card-topline"><span class="eyebrow" id="quiz-eyebrow">DEINE NÄCHSTE VOKABEL</span><span class="language-tag">DE → EN</span></div>
           <h2 id="quiz-title">Wie heißt das auf Englisch?</h2>
           <div class="word-prompt"><span id="word-category">AUS DEINEM SCHULBUCH</span><div class="word-row"><p id="german-word"></p><button class="icon-button" id="speak-german" type="button" aria-label="Deutsches Wort anhören" title="Anhören">🔊</button></div></div>
           <form id="answer-form" autocomplete="off">
@@ -67,6 +69,14 @@
               <input id="answer" name="answer" type="text" placeholder="Type your answer …" spellcheck="false" autocapitalize="none" required aria-describedby="feedback">
               <button class="button button-primary" id="check-answer" type="submit">Prüfen <span aria-hidden="true">→</span></button>
             </div>
+          </form>
+          <form id="verb-form" autocomplete="off" hidden>
+            <div class="verb-grid">
+              <label for="verb-inf">Grundform</label><input id="verb-inf" type="text" placeholder="infinitive" spellcheck="false" autocapitalize="none">
+              <label for="verb-past">Simple Past</label><input id="verb-past" type="text" placeholder="simple past" spellcheck="false" autocapitalize="none">
+              <label for="verb-pp">Past Participle</label><input id="verb-pp" type="text" placeholder="past participle" spellcheck="false" autocapitalize="none">
+            </div>
+            <button class="button button-primary" id="check-verb" type="submit">Prüfen <span aria-hidden="true">→</span></button>
           </form>
           <p id="hint" class="hint" lang="en" aria-live="polite" hidden></p>
           <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
@@ -90,9 +100,10 @@
         <aside class="side-card">
           <span class="side-icon" aria-hidden="true">✨</span>
           <h2>Wörter sammeln.<br> Abenteuer erleben.</h2>
-          <p><span id="round-length">20</span> richtige Antworten bringen dich zum Schatz. Mit deinem Gold kaufst du Tiere, Hüte, Spuren, Feiern, Truhen, Wege, Welten und Tipp-Joker. Fünf richtige Antworten am Stück bringen Bonus-Gold.</p>
+          <p><span id="round-length">20</span> richtige Antworten bringen dich zum Schatz. Mit deinem Gold kaufst du Tiere, Hüte, Spuren, Feiern, Truhen, Wege, Welten und Tipp-Joker. Fünf richtige Antworten am Stück bringen Bonus-Gold. Auf dem Weg warten ⭐-Felder: Dort nennst du alle drei Formen eines unregelmäßigen Verbs (Bonus-Gold!).</p>
           <div class="side-divider"></div>
           <div class="collection-count"><span aria-hidden="true">📖</span><div><strong id="word-count">0 Wörter</strong><span>in deiner Sammlung</span></div></div>
+          <button class="button button-primary full-width" id="open-groups">📚 Vokabeln auswählen</button>
           <button class="button button-light full-width" id="open-words">Meine Wörter <span aria-hidden="true">＋</span></button>
           <button class="button button-light full-width stats-button" id="open-stats">📊 Lernübersicht</button>
           <button class="button button-light full-width stats-button" id="open-transfer">💾 Spielstand übertragen</button>
@@ -120,9 +131,17 @@
     <p id="shop-feedback" class="feedback" role="status"></p>
   </dialog>
 
+  <dialog id="groups-dialog" aria-labelledby="groups-title">
+    <div class="dialog-heading"><div><span class="eyebrow">DEIN BUCH</span><h2 id="groups-title">Was willst du lernen?</h2></div><button class="close-button" data-close="groups-dialog" aria-label="Vokabelauswahl schließen">×</button></div>
+    <p>Wähle die Kapitel aus deinem Buch. Nur diese Wörter kommen im Spiel dran. Neue Kapitel kannst du jederzeit dazunehmen.</p>
+    <p class="groups-summary"><strong id="groups-count"></strong></p>
+    <div id="groups-list" class="groups-list"></div>
+    <p id="groups-feedback" class="feedback" role="status"></p>
+  </dialog>
+
   <dialog id="words-dialog" aria-labelledby="words-title">
     <div class="dialog-heading"><div><span class="eyebrow">DEINE WÖRTERSCHATZKISTE</span><h2 id="words-title">Jedes Wort ein neues Abenteuer.</h2></div><button class="close-button" data-close="words-dialog" aria-label="Wörter schließen">×</button></div>
-    <p>Die Startwörter stammen aus deinem Foto (Intro &amp; Topic 1). Ergänze deine eigenen!</p>
+    <p>Hier siehst du alle Wörter der gewählten Kapitel (siehe „Vokabeln auswählen“). Ergänze deine eigenen!</p>
     <form id="add-word-form">
       <label for="new-german">Deutsch</label><input id="new-german" required maxlength="160" placeholder="z. B. Regenbogen">
       <label for="new-english">Englisch</label><input id="new-english" required maxlength="160" placeholder="z. B. rainbow">
