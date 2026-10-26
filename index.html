@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf7f2">
+  <title>Rainbow Quest · Dein Vokabelabenteuer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="./index.html"><span aria-hidden="true">🌈</span> Rainbow<span>Quest</span></a>
+      <div class="header-actions">
+        <span class="coin-balance" aria-label="Deine Goldmünzen"><span aria-hidden="true">🪙</span> <strong id="coins">0</strong> <span>Gold</span></span>
+        <button class="voice-toggle" id="voice-toggle" type="button" aria-pressed="true" aria-label="Vorlesen und Nachsprechen">🔊</button>
+        <button class="button button-light" id="open-shop">Zauberladen <span aria-hidden="true">↗</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <span class="eyebrow">KLEINE WÖRTER. GROSSE ABENTEUER.</span>
+        <h1>Dein Wissen hat <span>Zauberkräfte.</span></h1>
+        <p>Übersetze ins Englische und bring dein Tier zum versteckten Schatz!</p>
+      </section>
+
+      <p id="storage-warning" class="notice" role="status" hidden></p>
+
+      <section class="journey-card" aria-labelledby="journey-title">
+        <div class="journey-heading">
+          <div><span class="eyebrow">DEINE SCHATZSUCHE</span><h2 id="journey-title">Wo der Schatz wohl versteckt ist?</h2></div>
+          <span class="reward-pill">🪙 +1 pro Wort · +3 je 5er-Serie · +25 am Schatz</span>
+        </div>
+        <div class="viewport bg-sky" id="viewport">
+          <div class="world" id="world">
+            <div class="decor" id="decor" aria-hidden="true"></div>
+            <svg class="track" id="track" aria-hidden="true"></svg>
+            <div id="path-markers" aria-hidden="true"></div>
+            <span class="world-label" id="start-label" aria-hidden="true">LOS GEHT’S</span>
+            <span class="world-label" id="finish-label" aria-hidden="true">DEIN SCHATZ</span>
+            <div class="treasure" id="treasure" role="img" aria-label="Schatztruhe"></div>
+            <div class="gold-burst" id="gold-burst" aria-hidden="true">🪙 ✨ 🪙 ✨ 🪙</div>
+            <button class="traveler" id="traveler" type="button" aria-label="Trick zeigen">
+              <span class="traveler-face" id="traveler-face"><span class="traveler-body" id="traveler-body"><span id="animal-glyph">🦄</span><span class="traveler-hat" id="traveler-hat" hidden></span></span></span>
+            </button>
+            <div class="effects" id="effects" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="journey-footer">
+          <span id="companion-name"></span>
+          <span class="streak" id="streak">🔥 Serie: 0</span>
+          <div class="progress-copy"><strong id="progress-text">0 von 20</strong><span> Wörtern geschafft</span></div>
+        </div>
+        <progress id="progress" max="20" value="0" aria-label="Weg zum Schatz"></progress>
+      </section>
+
+      <div class="learning-layout">
+        <section class="quiz-card" aria-labelledby="quiz-title">
+          <div class="card-topline"><span class="eyebrow">DEINE NÄCHSTE VOKABEL</span><span class="language-tag">DE → EN</span></div>
+          <h2 id="quiz-title">Wie heißt das auf Englisch?</h2>
+          <div class="word-prompt"><span id="word-category">AUS DEINEM SCHULBUCH</span><div class="word-row"><p id="german-word"></p><button class="icon-button" id="speak-german" type="button" aria-label="Deutsches Wort anhören" title="Anhören">🔊</button></div></div>
+          <form id="answer-form" autocomplete="off">
+            <label for="answer">Deine englische Übersetzung</label>
+            <div class="answer-row">
+              <input id="answer" name="answer" type="text" placeholder="Type your answer …" spellcheck="false" autocapitalize="none" required aria-describedby="feedback">
+              <button class="button button-primary" id="check-answer" type="submit">Prüfen <span aria-hidden="true">→</span></button>
+            </div>
+          </form>
+          <p id="hint" class="hint" lang="en" aria-live="polite" hidden></p>
+          <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+          <div class="speak-panel" id="speak-panel" hidden>
+            <p class="speak-target"><span>🎤 Sprich nach:</span> <strong id="speak-word" lang="en"></strong></p>
+            <p id="speak-status" class="speak-status" role="status" aria-live="polite"></p>
+            <div class="speak-actions" id="speak-actions">
+              <button class="button button-light" id="listen-again" type="button">🔊 Nochmal anhören</button>
+              <button class="button button-primary mic-button" id="mic-button" type="button">🎤 Jetzt sprechen</button>
+              <button class="text-button" id="skip-speak" type="button" hidden>Überspringen</button>
+            </div>
+          </div>
+          <div class="quiz-footer">
+            <button class="text-button" id="show-answer">Ich brauche die Lösung</button>
+            <button class="text-button" id="joker-button" type="button">💡 Tipp-Joker (0)</button>
+            <button class="button button-primary" id="next-word" hidden>Nächstes Wort →</button>
+            <span class="keyboard-hint" id="keyboard-hint">↵ Enter zum Prüfen</span>
+          </div>
+        </section>
+
+        <aside class="side-card">
+          <span class="side-icon" aria-hidden="true">✨</span>
+          <h2>Wörter sammeln.<br> Abenteuer erleben.</h2>
+          <p><span id="round-length">20</span> richtige Antworten bringen dich zum Schatz. Mit deinem Gold kaufst du Tiere, Hüte, Spuren, Feiern, Truhen, Wege, Welten und Tipp-Joker. Fünf richtige Antworten am Stück bringen Bonus-Gold.</p>
+          <div class="side-divider"></div>
+          <div class="collection-count"><span aria-hidden="true">📖</span><div><strong id="word-count">0 Wörter</strong><span>in deiner Sammlung</span></div></div>
+          <button class="button button-light full-width" id="open-words">Meine Wörter <span aria-hidden="true">＋</span></button>
+          <button class="button button-light full-width stats-button" id="open-stats">📊 Lernübersicht</button>
+          <button class="button button-light full-width stats-button" id="open-transfer">💾 Spielstand übertragen</button>
+          <p class="save-note">Jedes Wort wird vorgelesen. Sprich das englische Wort nach, um weiterzukommen (Mikrofon nötig, am besten Chrome oder Edge). Mit 🔊 oben schaltest du das aus. Dein Gold, dein Fortschritt, deine Käufe und eigenen Wörter bleiben in diesem Browser gespeichert. Mit „Spielstand übertragen“ nimmst du alles auf ein anderes Gerät mit.</p>
+        </aside>
+      </div>
+    </main>
+    <footer class="page-footer"><span>Mit Fantasie lernt es sich leichter.</span><span>Deutsch lernen? Heute mal Englisch! 🇬🇧</span></footer>
+  </div>
+
+  <dialog id="shop-dialog" aria-labelledby="shop-title">
+    <div class="dialog-heading"><div><span class="eyebrow">DEIN ZAUBERLADEN</span><h2 id="shop-title">Mach das Abenteuer zu deinem.</h2></div><button class="close-button" data-close="shop-dialog" aria-label="Zauberladen schließen">×</button></div>
+    <p class="shop-wallet">Dein Guthaben: <strong id="shop-coins">0</strong> 🪙</p>
+    <div class="shop-tabs" role="tablist" aria-label="Kategorien">
+      <button type="button" role="tab" data-category="animals" aria-controls="shop-list" aria-selected="true">🦄 Tiere</button>
+      <button type="button" role="tab" data-category="hats" aria-controls="shop-list" aria-selected="false">🎩 Hüte</button>
+      <button type="button" role="tab" data-category="trails" aria-controls="shop-list" aria-selected="false">✨ Spuren</button>
+      <button type="button" role="tab" data-category="celebrations" aria-controls="shop-list" aria-selected="false">🎉 Feiern</button>
+      <button type="button" role="tab" data-category="chests" aria-controls="shop-list" aria-selected="false">🧰 Truhen</button>
+      <button type="button" role="tab" data-category="paths" aria-controls="shop-list" aria-selected="false">🌈 Wege</button>
+      <button type="button" role="tab" data-category="backgrounds" aria-controls="shop-list" aria-selected="false">🏞️ Welten</button>
+      <button type="button" role="tab" data-category="jokers" aria-controls="shop-list" aria-selected="false">💡 Joker</button>
+    </div>
+    <div id="shop-list" class="shop-list" role="tabpanel"></div>
+    <p id="shop-feedback" class="feedback" role="status"></p>
+  </dialog>
+
+  <dialog id="words-dialog" aria-labelledby="words-title">
+    <div class="dialog-heading"><div><span class="eyebrow">DEINE WÖRTERSCHATZKISTE</span><h2 id="words-title">Jedes Wort ein neues Abenteuer.</h2></div><button class="close-button" data-close="words-dialog" aria-label="Wörter schließen">×</button></div>
+    <p>Die Startwörter stammen aus deinem Foto (Intro &amp; Topic 1). Ergänze deine eigenen!</p>
+    <form id="add-word-form">
+      <label for="new-german">Deutsch</label><input id="new-german" required maxlength="160" placeholder="z. B. Regenbogen">
+      <label for="new-english">Englisch</label><input id="new-english" required maxlength="160" placeholder="z. B. rainbow">
+      <small>Mehrere richtige Antworten mit Semikolon trennen, z. B. theatre; theater.</small>
+      <button class="button button-primary full-width" type="submit">Wort hinzufügen ＋</button>
+    </form>
+    <p id="word-feedback" class="feedback" role="status"></p>
+    <div id="word-list" class="word-list"></div>
+  </dialog>
+
+  <dialog id="stats-dialog" aria-labelledby="stats-title">
+    <div class="dialog-heading"><div><span class="eyebrow">DEINE LERNÜBERSICHT</span><h2 id="stats-title">So gut kennst du deine Wörter.</h2></div><button class="close-button" data-close="stats-dialog" aria-label="Lernübersicht schließen">×</button></div>
+    <div class="stats-tiles" id="stats-tiles"></div>
+    <div class="mastery">
+      <div class="mastery-label"><span>Sicher gelernt</span><strong id="mastery-text">0 %</strong></div>
+      <progress id="mastery-progress" max="1" value="0" aria-label="Anteil sicher gelernter Wörter"></progress>
+      <small>✅ Sicher heißt: 3-mal hintereinander richtig getippt. Schwierige Wörter kommen öfter dran.</small>
+    </div>
+    <h3 class="stats-heading">😬 Schwierige Wörter</h3>
+    <div id="hard-list" class="word-list stats-list"></div>
+    <h3 class="stats-heading">📖 Alle Wörter</h3>
+    <div class="shop-tabs stats-tabs" role="tablist" aria-label="Filter">
+      <button type="button" role="tab" data-filter="all" aria-controls="stats-list" aria-selected="true">Alle</button>
+      <button type="button" role="tab" data-filter="new" aria-controls="stats-list" aria-selected="false">🆕 Neu</button>
+      <button type="button" role="tab" data-filter="learning" aria-controls="stats-list" aria-selected="false">🔁 Übe noch</button>
+      <button type="button" role="tab" data-filter="mastered" aria-controls="stats-list" aria-selected="false">✅ Sicher</button>
+    </div>
+    <div id="stats-list" class="word-list stats-list" role="tabpanel"></div>
+  </dialog>
+
+  <dialog id="transfer-dialog" aria-labelledby="transfer-title">
+    <div class="dialog-heading"><div><span class="eyebrow">DEIN SPIELSTAND</span><h2 id="transfer-title">Nimm dein Abenteuer mit.</h2></div><button class="close-button" data-close="transfer-dialog" aria-label="Spielstand übertragen schließen">×</button></div>
+    <p>Gold, Käufe, Fortschritt, Lernübersicht und eigene Wörter wandern mit. Auf dem neuen Gerät einfach dieses Spiel öffnen und den Spielstand laden.</p>
+    <section class="transfer-section" aria-labelledby="export-title">
+      <h3 id="export-title" class="stats-heading">📤 Von diesem Gerät mitnehmen</h3>
+      <button class="button button-primary full-width" id="export-file" type="button">💾 Als Datei sichern</button>
+      <label for="export-code">oder diesen Code kopieren und z. B. per Nachricht schicken:</label>
+      <textarea id="export-code" class="save-code" readonly rows="3" spellcheck="false"></textarea>
+      <button class="button button-light full-width" id="copy-code" type="button">📋 Code kopieren</button>
+    </section>
+    <section class="transfer-section" aria-labelledby="import-title">
+      <h3 id="import-title" class="stats-heading">📥 Auf diesem Gerät laden</h3>
+      <label class="button button-light full-width file-button">📂 Datei laden<input id="import-file" type="file" accept=".json,application/json"></label>
+      <label for="import-code">oder Code einfügen:</label>
+      <textarea id="import-code" class="save-code" rows="3" spellcheck="false" placeholder="RQ1:…"></textarea>
+      <button class="button button-light full-width" id="import-code-button" type="button">Code laden</button>
+    </section>
+    <p id="transfer-feedback" class="feedback" role="status" aria-live="polite"></p>
+  </dialog>
+</body>
+</html>
